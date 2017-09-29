@@ -1,8 +1,6 @@
 # ReactNativeAndroidWebView
 
-React native android webview example
-
-Android webview does not support file upload by default.
+Android webview does not support file upload by default, I make this project to show solution for this problem.
 
 ## Situation
 
@@ -20,7 +18,7 @@ but is still unmerged.
 
 ## Solution
 
-Based on solutions mentioned above, I make this project to show the solution for the issue.
+This solution is based on the other solution mentioned above.
 
 I tested on android 6+, and it worked fine...
 
