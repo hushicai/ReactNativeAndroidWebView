@@ -26,7 +26,7 @@ I tested on android 6+, and it worked fine...
 
 For now, RN does not allow us to extend built-in components, like `WebView`.
 
-This project's webview implemention just copy `WebView.android.js`.
+This project's webview implemention is just copied `WebView.android.js`.
 
 Luckily, when this [PR](https://github.com/facebook/react-native/pull/15016) is released in the feature, 
 we can removed the ugly redudant js code from `WebView.android.js`.
