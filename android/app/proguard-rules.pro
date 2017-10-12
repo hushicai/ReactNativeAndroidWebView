@@ -68,3 +68,8 @@
 -dontwarn java.nio.file.*
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 -dontwarn okio.**
+
+# custom webview
+-keepclassmembers class * extends android.webkit.WebChromeClient{
+    public void openFileChooser(...);
+}
