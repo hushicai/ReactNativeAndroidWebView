@@ -72,6 +72,20 @@ public class CustomWebViewModule extends ReactContextBaseJavaModule implements A
         ad.show();
     }
 
+    public void startDownloadIntent(String url) {
+        Activity currentActivity = getCurrentActivity();
+        if (currentActivity == null) {
+            Log.w(REACT_CLASS, "No context available");
+            return;
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse(url));
+
+        currentActivity.startActivity(intent);
+    }
+
     // For Android 4.1+
     @SuppressWarnings("unused")
     public boolean startFileChooserIntent(ValueCallback<Uri> uploadMsg, String acceptType) {

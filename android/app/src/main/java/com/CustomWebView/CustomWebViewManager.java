@@ -3,6 +3,7 @@ package com.CustomWebView;
 import android.net.Uri;
 import android.os.Build;
 import android.webkit.ConsoleMessage;
+import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
 import android.webkit.ValueCallback;
@@ -25,10 +26,29 @@ public class CustomWebViewManager extends ReactWebViewManager {
         return "CustomWebView";
     }
 
-    @ReactProp(name = "uploadEnabledAndroid")
-    public void uploadEnabledAndroid(WebView view, boolean enabled) {
+    @ReactProp(name = "webContentsDebuggingEnabled")
+    public void webContentsDebuggingEnabled(WebView view, boolean enabled) {
+        if (enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
+    }
+
+    @ReactProp(name = "uploadEnabled")
+    public void uploadEnabled(WebView view, boolean enabled) {
         if (enabled) {
             view.setWebChromeClient(new CustomWebChromeClient());
+        }
+    }
+
+    @ReactProp(name = "downloadEnabled")
+    public void downloadEnabled(WebView view, boolean enabled) {
+        if (enabled) {
+            view.setDownloadListener(new DownloadListener() {
+                @Override
+                public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                    getModule().startDownloadIntent(url);
+                }
+            });
         }
     }
 
