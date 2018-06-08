@@ -1,32 +1,18 @@
 # ReactNativeAndroidWebView
 
-Android webview does not support file upload by default, I make this project to show solution for this problem.
+Android webview does not support file upload、file download and web contents debugging by default, I make this project to show solution for this problem.
 
-## Situation
+## React Native v0.50.0-
 
-There are some relate [issues](https://github.com/facebook/react-native/issues/11230) talking about this.
+For RN v0.50.0-, RN do not allow us to extend built-in components.
 
-And there is already some solution for this，such as：
+So [CustomWebView](https://github.com/hushicai/ReactNativeAndroidWebView/blob/2f8a3dc66ff9372e2681e3a223781d3d2370e27e/src/components/CustomWebView/CustomWebView.android.js) have to copy the code from [react-native/Libraries/Components/WebView/WebView.android.js](https://github.com/facebook/react-native/blob/0.49-stable/Libraries/Components/WebView/WebView.android.js).
 
-* [react-native-webview-file-upload](https://github.com/dongyaQin/react-native-webview-file-upload)
-* [react-native-webview-android](https://github.com/lucasferreira/react-native-webview-android)
+## React Native v0.50.0 and v0.50.0+
 
-But, unfortunately, they are outdated.
+For RN v0.50.0 and v0.50.0+, RN allow us to "[Add props for overriding native component in WebView](https://github.com/facebook/react-native/pull/15016)".
 
-In addition, [here](https://github.com/facebook/react-native/pull/12807) is a PR that wants to fix this issue, 
-but is still unmerged.
+So we can use the new feature to implement our [CustomWebView](https://github.com/hushicai/ReactNativeAndroidWebView/blob/97b4582a24a2f166ca9c20de3f1f5cd12edc9f87/src/components/CustomWebView/CustomWebView.android.js).
 
-## Solution
+As we can see, the new implemention is brief.
 
-This solution is based on the other solution mentioned above.
-
-I tested on android 6+, and it worked fine...
-
-## TODO
-
-For now, RN does not allow us to extend built-in components, like `WebView`.
-
-This project's webview implemention is just copied from `WebView.android.js`.
-
-Luckily, when this [PR](https://github.com/facebook/react-native/pull/15016) is released in the feature, 
-we can removed the ugly redudant js code from `WebView.android.js`.
