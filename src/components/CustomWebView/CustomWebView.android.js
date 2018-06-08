@@ -209,7 +209,13 @@ class WebView extends React.Component {
         saveFormDataDisabled: PropTypes.bool,
 
         // make file upload available
-        uploadEnabledAndroid: PropTypes.bool
+        uploadEnabled: PropTypes.bool,
+
+        // make file download avaible
+        downloadEnabled: PropTypes.bool,
+
+        // make chrome remote inspect
+        webContentsDebuggingEnabled: PropTypes.bool
     };
 
     static defaultProps = {
@@ -291,7 +297,9 @@ class WebView extends React.Component {
                 allowUniversalAccessFromFileURLs={this.props.allowUniversalAccessFromFileURLs}
                 mixedContentMode={this.props.mixedContentMode}
                 saveFormDataDisabled={this.props.saveFormDataDisabled}
-                uploadEnabledAndroid={true}
+                uploadEnabled={this.props.uploadEnabled}
+                downloadEnabled={this.props.downloadEnabled}
+                webContentsDebuggingEnabled={this.props.webContentsDebuggingEnabled}
             />;
 
         return (
