@@ -2,14 +2,6 @@
  * created by hushicai on 2017/9/29
  */
 
-// android webview 不支持file upload
-// @see: https://github.com/facebook/react-native/issues/11230
-
-// RN 0.47.2版本还不支持扩展内置Component，所以需要拷贝一份WebView.android.js代码
-// 不过RN 0.49.0.-rc.6包含了这个pr：https://github.com/facebook/react-native/pull/15016
-// 这个可以用来解决代码冗余问题
-// 后续升级再修改
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
